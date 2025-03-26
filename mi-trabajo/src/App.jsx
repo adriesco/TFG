@@ -15,13 +15,13 @@ function MainPage() {
 
         <div className="flex gap-5 opacity-0 animate-fade-in delay-500">
           <a
-            href="/registro"
+            href="/Registro"
             className="px-6 py-3 bg-yellow-400 text-green-900 font-semibold rounded-lg hover:bg-yellow-500 transition"
           >
             Registrarse
           </a>
           <a
-            href="/iniciar-sesion"
+            href="/IniciarSesion"
             className="px-6 py-3 bg-blue-400 text-white font-semibold rounded-lg hover:bg-blue-500 transition"
           >
             Iniciar Sesión
