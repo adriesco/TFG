@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 import Registro from "./components/Registro";
 import IniciarSesion from "./components/IniciarSesion";
 import Home from "./components/Home";
+import Privacidad from "./components/Privacidad";
+import TerminosCondiciones from "./components/TerminosCondiciones";
 
 function App() {
   return (
@@ -13,6 +15,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/iniciarsesion" element={<IniciarSesion />} />
+          <Route
+            path="/terminoscondiciones"
+            element={<TerminosCondiciones />}
+          />
+          <Route path="/politicaprivacidad" element={<Privacidad />} />
         </Routes>
         <Footer />
       </div>
