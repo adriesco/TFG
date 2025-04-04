@@ -8,6 +8,7 @@ import Privacidad from "./components/Privacidad";
 import TerminosCondiciones from "./components/TerminosCondiciones";
 import HeaderMainHome from "./components/HeaderMainHome";
 import MainHome from "./components/MainHome";
+import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 
 function App() {
   return (
