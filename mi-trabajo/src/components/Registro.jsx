@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-function Registro() {
+
+export default function Registro() {
   return (
     <div className="bg-green-600 text-white min-h-screen flex flex-col justify-between">
       <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
@@ -46,18 +48,19 @@ function Registro() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-green-500 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition"
+          {/* Botón de Registrarse con Link a MainHome */}
+          <Link
+            to="/mainhome"
+            className="block w-full bg-green-500 text-white font-semibold py-2 text-center rounded-lg hover:bg-green-700 transition"
           >
             Registrarse
-          </button>
+          </Link>
 
           <p className="text-sm mt-2">
             ¿Ya tienes cuenta?{" "}
-            <a href="IniciarSesion" className="text-blue-300 hover:underline">
+            <Link to="/iniciarsesion" className="text-blue-300 hover:underline">
               Inicia sesión
-            </a>
+            </Link>
           </p>
         </form>
       </main>
@@ -66,5 +69,3 @@ function Registro() {
     </div>
   );
 }
-
-export default Registro;

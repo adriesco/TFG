@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+
 function IniciarSesion() {
   return (
     <div className="bg-green-600 text-white min-h-screen flex flex-col justify-between">
@@ -26,18 +28,19 @@ function IniciarSesion() {
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full bg-green-500 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition"
+
+          <Link
+            to="/mainhome"
+            className="block w-full bg-green-500 text-white font-semibold py-2 text-center rounded-lg hover:bg-green-700 transition"
           >
             Iniciar Sesion
-          </button>
+          </Link>
 
           <p className="text-sm mt-2">
-            ¿ No tienes cuenta?{" "}
-            <a href="Registro" className="text-blue-300 hover:underline">
-              Registrate
-            </a>
+            ¿No tienes cuenta?{" "}
+            <Link to="/registro" className="text-blue-300 hover:underline">
+              Regístrate
+            </Link>
           </p>
         </form>
       </main>
