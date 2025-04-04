@@ -6,6 +6,8 @@ import IniciarSesion from "./components/IniciarSesion";
 import Home from "./components/Home";
 import Privacidad from "./components/Privacidad";
 import TerminosCondiciones from "./components/TerminosCondiciones";
+import HeaderMainHome from "./components/HeaderMainHome";
+import MainHome from "./components/MainHome";
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
             element={<TerminosCondiciones />}
           />
           <Route path="/politicaprivacidad" element={<Privacidad />} />
+          <Route
+            path="/preguntasfrecuentes"
+            element={<PreguntasFrecuentes />}
+          />
+          <Route path="/mainhome" element={<MainHome />} />
+          <Route path="/headermainhome" element={<HeaderMainHome />} />
         </Routes>
         <Footer />
       </div>
