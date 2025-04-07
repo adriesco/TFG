@@ -1,10 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PreguntasFrecuentes() {
   const fechaActual = new Date().toLocaleDateString("es-ES");
 
   return (
     <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
+      <Link
+        to="/mainhome"
+        className="self-start mb-4 text-white hover:text-green-200 transition text-xl font-semibold"
+      >
+        ← Volver
+      </Link>
       <div className="max-w-lg w-full px-8 py-5 rounded-xl bg-white shadow-lg">
         <h1 className="text-4xl font-extrabold mb-6 opacity-0 animate-fade-in delay-100 text-black">
           Preguntas Frecuentes
