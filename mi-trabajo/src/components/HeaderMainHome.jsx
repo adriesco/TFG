@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 
 function HeaderMainHome() {
   return (
-    <header className="bg-green-600 text-white p-4 flex items-center justify-between shadow-lg relative">
-      {/* Botón del menú de la página */}
+    <header className="bg-green-800 text-white p-4 flex items-center justify-between shadow-lg relative">
       <div className="relative">
         <input type="checkbox" id="menu-toggle" className="peer hidden" />
         <label
@@ -32,7 +31,7 @@ function HeaderMainHome() {
           </li>
           <li>
             <Link
-              to="/privacidad"
+              to={"/politicaprivacidad"}
               className="block px-4 py-2 hover:bg-gray-200 rounded"
             >
               Privacidad
@@ -44,11 +43,11 @@ function HeaderMainHome() {
       {/*Foto del usuario predeterminada despues se actualizará*/}
       <div className="flex flex-col items-center mx-4">
         <img
-          src="vite.svg"
+          src="default.avif"
           alt="perfil"
           className="w-20 h-20 rounded-full border-4 border-white shadow-lg"
         />
-        <p className="text-lg font-semibold">Adrian Escolar</p>
+        <p className="text-lg font-semibold mt-1">Adrian Escolar</p>
       </div>
 
       <h1 className="text-2xl font-bold">GoFootball</h1>
