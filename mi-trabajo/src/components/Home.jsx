@@ -4,17 +4,14 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
-      {/* Animación de aparición del título */}
       <h1 className="text-4xl font-extrabold mb-4 opacity-0 animate-fade-in delay-100">
         Bienvenido a <span className="text-yellow-300">GoFootball</span>
       </h1>
 
-      {/* Animación de aparición del texto */}
       <p className="text-lg mb-6 opacity-0 animate-fade-in delay-300">
         ¿Qué deseas hacer?
       </p>
 
-      {/* Animación en los botones */}
       <div className="flex gap-5 opacity-0 animate-fade-in delay-500">
         <Link
           to="/registro"

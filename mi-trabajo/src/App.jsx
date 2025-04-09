@@ -9,6 +9,7 @@ import TerminosCondiciones from "./components/TerminosCondiciones";
 import HeaderMainHome from "./components/HeaderMainHome";
 import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
+import EditarPerfil from "./components/EditarPerfil";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           />
           <Route path="/mainhome" element={<MainHome />} />
           <Route path="/headermainhome" element={<HeaderMainHome />} />
+          <Route path="/editarperfil" element={<EditarPerfil />} />
         </Routes>
         <Footer />
       </div>
