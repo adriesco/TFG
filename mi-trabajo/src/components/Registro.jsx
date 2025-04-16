@@ -22,6 +22,15 @@ export default function Registro() {
           </div>
 
           <div>
+            <label className="block font-semibold">Nombre de Usuario</label>
+            <input
+              type="text"
+              placeholder="Nombre"
+              className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
+            />
+          </div>
+
+          <div>
             <label className="block font-semibold">Email</label>
             <input
               type="email"
