@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function HeaderMainHome() {
+  const [avatar, setAvatar] = useState("default.avif");
+
+  useEffect(() => {
+    const iconoGuardado = localStorage.getItem("avatarSeleccionado");
+    if (iconoGuardado) {
+      setAvatar(iconoGuardado);
+    }
+  }, []);
+
   return (
     <header className="bg-green-600 text-white p-4 flex items-center justify-between shadow-lg relative">
       {/* Menú lateral */}
@@ -42,11 +52,11 @@ function HeaderMainHome() {
       </div>
 
       {/* Foto + Nombre + Editar */}
-      <div className="flex flex-col items-center space-x-3">
+      <div className="flex items-center space-x-4">
         <img
-          src="default.avif"
+          src={avatar}
           alt="perfil"
-          className="w-20 h-20 rounded-full border-2 border-white shadow"
+          className="w-16 h-16 rounded-full border-2 border-white shadow"
         />
         <div className="flex items-center space-x-2">
           <p className="text-lg font-semibold mt-2">Adrian Escolar</p>
@@ -71,6 +81,7 @@ function HeaderMainHome() {
           </Link>
         </div>
       </div>
+
       <h1 className="text-2xl font-bold">GoFootball</h1>
     </header>
   );
