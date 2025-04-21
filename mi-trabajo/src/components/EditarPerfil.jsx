@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export const EditarPerfil = () => {
   const [selectedIcon, setSelectedIcon] = useState("/default.jpg");
   const [userData, setUserData] = useState({
-    name: "Juan",
-    email: "juan.perez@example.com",
-    username: "juanito10",
+    name: "Adrian",
+    email: "adrian.escolar@example.com",
+    username: "adriesco.7",
   });
 
   const icons = [
