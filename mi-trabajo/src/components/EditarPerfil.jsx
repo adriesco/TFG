@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const EditarPerfil = () => {
-  const [selectedIcon, setSelectedIcon] = useState("/default.jpg");
+  const [selectedIcon, setSelectedIcon] = useState("/default.avif");
   const [userData, setUserData] = useState({
     name: "Adrian",
     email: "adrian.escolar@example.com",
