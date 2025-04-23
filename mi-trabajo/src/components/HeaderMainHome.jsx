@@ -3,11 +3,18 @@ import { useEffect, useState } from "react";
 
 function HeaderMainHome() {
   const [avatar, setAvatar] = useState("default.avif");
+  const [nombreUsuario, setNombreUsuario] = useState("Usuario");
 
   useEffect(() => {
     const iconoGuardado = localStorage.getItem("avatarSeleccionado");
+    const usuarioGuardado = localStorage.getItem("nombreUsuario");
+
     if (iconoGuardado) {
       setAvatar(iconoGuardado);
+    }
+
+    if (usuarioGuardado) {
+      setNombreUsuario(usuarioGuardado);
     }
   }, []);
 
@@ -59,7 +66,8 @@ function HeaderMainHome() {
           className="w-16 h-16 rounded-full border-2 border-white shadow"
         />
         <div className="flex items-center space-x-2">
-          <p className="text-lg font-semibold mt-2">Adrian Escolar</p>
+          <p className="text-lg font-semibold mt-2">{nombreUsuario}</p>{" "}
+          {/* 👈 Aquí */}
           <Link
             to="/editarperfil"
             className="text-white hover:text-yellow-300 transition"
