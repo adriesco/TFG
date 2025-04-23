@@ -10,12 +10,12 @@ export const EditarPerfil = () => {
   });
 
   const icons = [
-    "/messi.jpg",
-    "/balotelli.jpg",
-    "/cris.jpg",
-    "/modric.jpg",
-    "/joselu.jpg",
-    "/mbappe.jpg",
+    "/avatar/hombre.png",
+    "/avatar/mujer.png",
+    "/avatar/futbolista.png",
+    "/avatar/chicafut.png",
+    "/avatar/bombero.png",
+    "/avatar/mono.png",
   ];
 
   const handleInputChange = (e) => {
