@@ -88,50 +88,32 @@ function MainHome() {
           <h2 className="text-2xl font-bold mb-4 text-green-700">
             🌍 Ligas por País
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/logos/laliga.png"
-                alt="LaLiga"
-                className="w-20 h-20 object-contain mb-2"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">LaLiga</h3>
-              <p className="text-sm text-gray-600">España</p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+            <Link to="/laliga">
+              <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
+                <img
+                  src="/logos/laliga.png"
+                  alt="LaLiga"
+                  className="w-20 h-20 object-contain mb-2"
+                />
+                <h3 className="text-lg font-semibold text-gray-800">LaLiga</h3>
+                <p className="text-sm text-gray-600">España</p>
+              </div>
+            </Link>
 
-            <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/logos/inglesa.png"
-                alt="Premier League"
-                className="w-20 h-20 object-contain mb-2"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">
-                Premier League
-              </h3>
-              <p className="text-sm text-gray-600">Inglaterra</p>
-            </div>
-
-            <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/logos/italiana.png"
-                alt="Serie A"
-                className="w-20 h-20 object-contain mb-2"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">Serie A</h3>
-              <p className="text-sm text-gray-600">Italia</p>
-            </div>
-
-            <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/logos/bundes.png"
-                alt="Bundesliga"
-                className="w-20 h-20 object-contain mb-2"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">
-                Bundesliga
-              </h3>
-              <p className="text-sm text-gray-600">Alemania</p>
-            </div>
+            <Link to="/premier">
+              <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer">
+                <img
+                  src="/logos/inglesa.png"
+                  alt="Premier League"
+                  className="w-20 h-20 object-contain mb-2"
+                />
+                <h3 className="text-lg font-semibold text-gray-800">
+                  Premier League
+                </h3>
+                <p className="text-sm text-gray-600">Inglaterra</p>
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -167,14 +149,14 @@ function MainHome() {
 
             <div className="flex flex-col items-center bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
               <img
-                src="/jugadores/vinicius.png"
-                alt="Vinícius Junior"
+                src="/jugadores/lamine.png"
+                alt="Lamine Yamal"
                 className="w-24 h-24 object-contain mb-2 rounded-full"
               />
               <h3 className="text-lg font-semibold text-gray-800">
-                Vinícius Junior
+                Lamine Yamal
               </h3>
-              <p className="text-sm text-gray-600">8 MVPs</p>
+              <p className="text-sm text-gray-600">17 años</p>
             </div>
           </div>
         </section>
