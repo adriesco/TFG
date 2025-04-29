@@ -9,32 +9,41 @@ function HeaderMainHome() {
     const iconoGuardado = localStorage.getItem("avatarSeleccionado");
     const usuarioGuardado = localStorage.getItem("nombreUsuario");
 
-    if (iconoGuardado) {
-      setAvatar(iconoGuardado);
-    }
-
-    if (usuarioGuardado) {
-      setNombreUsuario(usuarioGuardado);
-    }
+    if (iconoGuardado) setAvatar(iconoGuardado);
+    if (usuarioGuardado) setNombreUsuario(usuarioGuardado);
   }, []);
 
   return (
-    <header className="bg-green-600 text-white p-4 flex items-center justify-between shadow-lg relative">
+    <header className="bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-4 shadow-md flex items-center justify-between relative z-10">
       {/* Menú lateral */}
       <div className="relative">
         <input type="checkbox" id="menu-toggle" className="peer hidden" />
         <label
           htmlFor="menu-toggle"
-          className="cursor-pointer text-lg px-3 py-2 rounded-lg bg-green-700 hover:bg-green-800 transition"
+          className="cursor-pointer text-xl px-3 py-2 bg-green-700 hover:bg-green-800 rounded-lg transition flex items-center gap-1"
         >
-          ☰ Menú
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          Menú
         </label>
 
-        <ul className="absolute top-12 left-0 bg-white text-gray-900 shadow-lg rounded-lg w-48 p-2 space-y-2 hidden peer-checked:block">
+        <ul className="absolute top-14 left-0 bg-white text-gray-900 shadow-xl rounded-lg w-56 p-2 space-y-2 hidden peer-checked:block animate-fade-in-down">
           <li>
             <Link
               to="/preguntasfrecuentes"
-              className="block px-4 py-2 hover:bg-gray-200 rounded"
+              className="block px-4 py-2 hover:bg-gray-100 rounded"
             >
               Preguntas Frecuentes
             </Link>
@@ -42,7 +51,7 @@ function HeaderMainHome() {
           <li>
             <Link
               to="/terminoscondiciones"
-              className="block px-4 py-2 hover:bg-gray-200 rounded"
+              className="block px-4 py-2 hover:bg-gray-100 rounded"
             >
               Términos y Condiciones
             </Link>
@@ -50,47 +59,50 @@ function HeaderMainHome() {
           <li>
             <Link
               to="/politicaprivacidad"
-              className="block px-4 py-2 hover:bg-gray-200 rounded"
+              className="block px-4 py-2 hover:bg-gray-100 rounded"
             >
-              Privacidad
+              Política de Privacidad
             </Link>
           </li>
         </ul>
       </div>
 
-      {/* Foto + Nombre + Editar */}
-      <div className="flex items-center space-x-4">
+      {/* Nombre + foto + editar */}
+      <div className="flex items-center space-x-3">
         <img
           src={avatar}
           alt="perfil"
-          className="w-16 h-16 rounded-full border-2 border-white shadow"
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white shadow"
         />
-        <div className="flex items-center space-x-2">
-          <p className="text-lg font-semibold mt-2">{nombreUsuario}</p>{" "}
-          {/* 👈 Aquí */}
-          <Link
-            to="/editarperfil"
-            className="text-white hover:text-yellow-300 transition"
-            title="Editar perfil"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-5 mt-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-              <path
-                fillRule="evenodd"
-                d="M2 15a1 1 0 011-1h11a1 1 0 110 2H3a1 1 0 01-1-1z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Link>
+        <div className="flex flex-col">
+          <span className="text-sm text-green-100">Hola,</span>
+          <div className="flex items-center space-x-1">
+            <p className="font-semibold truncate max-w-[100px] md:max-w-[150px]">
+              {nombreUsuario}
+            </p>
+            <Link to="/editarperfil" title="Editar perfil">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-yellow-300 hover:text-yellow-400 transition"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                <path
+                  fillRule="evenodd"
+                  d="M2 15a1 1 0 011-1h11a1 1 0 110 2H3a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
 
-      <h1 className="text-2xl font-bold">GoFootball</h1>
+      {/* Título */}
+      <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+        ⚽ GoFootball
+      </h1>
     </header>
   );
 }
