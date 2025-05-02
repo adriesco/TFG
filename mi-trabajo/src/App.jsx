@@ -10,11 +10,11 @@ import HeaderMainHome from "./components/HeaderMainHome";
 import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 import EditarPerfil from "./components/EditarPerfil";
-
+import LigaEspañola from "./components/LigaEspañola";
 function App() {
   return (
     <Router>
-      <div className="bg-green-600 text-white min-h-screen flex flex-col justify-between">
+      <div className=" text-white min-h-screen flex flex-col justify-between">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/registro" element={<Registro />} />
@@ -31,6 +31,7 @@ function App() {
           <Route path="/mainhome" element={<MainHome />} />
           <Route path="/headermainhome" element={<HeaderMainHome />} />
           <Route path="/editarperfil" element={<EditarPerfil />} />
+          <Route path="/ligaespañola" element={<LigaEspañola />} />
         </Routes>
         <Footer />
       </div>
