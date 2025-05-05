@@ -1,74 +1,87 @@
 import HeaderLigaEspaña from "./HeaderLigaEspaña";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
-function LigaEspañola() {
+function CalendarioLiga() {
   const partidos = [
     {
       local: { nombre: "Real Madrid", escudo: "/escudos/liga/realmadrid.png" },
-      visitante: { nombre: "Barcelona", escudo: "/escudos/liga/barcelona.png" },
-      resultado: [2, 1],
-      fecha: "24/04/25",
+      visitante: { nombre: "Girona", escudo: "/escudos/liga/girona.png" },
+      resultado: ["–", "–"],
+      fecha: "08/05/25",
+      hora: "21:00",
+    },
+    {
+      local: { nombre: "Barcelona", escudo: "/escudos/liga/barcelona.png" },
+      visitante: { nombre: "Betis", escudo: "/escudos/liga/betis.png" },
+      resultado: ["–", "–"],
+      fecha: "09/05/25",
+      hora: "18:30",
     },
     {
       local: { nombre: "Sevilla", escudo: "/escudos/liga/sevilla.png" },
-      visitante: { nombre: "Betis", escudo: "/escudos/liga/betis.png" },
-      resultado: [1, 1],
-      fecha: "24/04/25",
+      visitante: { nombre: "Valencia", escudo: "/escudos/liga/valencia.png" },
+      resultado: ["–", "–"],
+      fecha: "09/05/25",
+      hora: "20:45",
+    },
+    {
+      local: { nombre: "Athletic", escudo: "/escudos/liga/athletic.png" },
+      visitante: { nombre: "Celta", escudo: "/escudos/liga/celta.png" },
+      resultado: ["–", "–"],
+      fecha: "10/05/25",
+      hora: "17:00",
     },
     {
       local: { nombre: "Atlético", escudo: "/escudos/liga/atleticomadrid.png" },
-      visitante: { nombre: "Valencia", escudo: "/escudos/liga/valencia.png" },
-      resultado: [3, 0],
-      fecha: "24/04/25",
+      visitante: { nombre: "Mallorca", escudo: "/escudos/liga/mallorca.png" },
+      resultado: ["–", "–"],
+      fecha: "10/05/25",
+      hora: "21:00",
     },
     {
-      local: { nombre: "Villarreal", escudo: "/escudos/liga/villareal.png" },
-      visitante: { nombre: "Athletic", escudo: "/escudos/liga/athletic.png" },
-      resultado: [2, 2],
-      fecha: "24/04/25",
+      local: { nombre: "Osasuna", escudo: "/escudos/liga/osasuna.png" },
+      visitante: { nombre: "Getafe", escudo: "/escudos/liga/getafe.png" },
+      resultado: ["–", "–"],
+      fecha: "11/05/25",
+      hora: "19:15",
     },
     {
-      local: { nombre: "Celta", escudo: "/escudos/liga/celta.png" },
-      visitante: { nombre: "Alavés", escudo: "/escudos/liga/alaves.png" },
-      resultado: [0, 1],
-      fecha: "24/04/25",
-    },
-    {
-      local: {
+      local: { nombre: "Alavés", escudo: "/escudos/liga/alaves.png" },
+      visitante: {
         nombre: "RealSociedad",
         escudo: "/escudos/liga/realsociedad.png",
       },
-      visitante: { nombre: "Osasuna", escudo: "/escudos/liga/osasuna.png" },
-      resultado: [1, 3],
-      fecha: "24/04/25",
+      resultado: ["–", "–"],
+      fecha: "11/05/25",
+      hora: "21:00",
     },
     {
-      local: { nombre: "Getafe", escudo: "/escudos/liga/getafe.png" },
-      visitante: { nombre: "Rayo", escudo: "/escudos/liga/rayovallecano.png" },
-      resultado: [2, 0],
-      fecha: "24/04/25",
-    },
-    {
-      local: { nombre: "Mallorca", escudo: "/escudos/liga/mallorca.png" },
-      visitante: { nombre: "Cádiz", escudo: "/escudos/liga/cadiz.png" },
-      resultado: [0, 0],
-      fecha: "23/04/25",
-    },
-    {
-      local: { nombre: "Valladolid", escudo: "/escudos/liga/valladolid.png" },
-      visitante: { nombre: "Leganes", escudo: "/escudos/liga/leganes.png" },
-      resultado: [0, 3],
-      fecha: "23/04/25",
-    },
-    {
-      local: { nombre: "Girona", escudo: "/escudos/liga/girona.png" },
+      local: { nombre: "Rayo", escudo: "/escudos/liga/rayovallecano.png" },
       visitante: { nombre: "Espanyol", escudo: "/escudos/liga/espanyol.png" },
-      resultado: [3, 2],
-      fecha: "21/04/25",
+      resultado: ["–", "–"],
+      fecha: "12/05/25",
+      hora: "16:00",
+    },
+    {
+      local: { nombre: "Leganés", escudo: "/escudos/liga/leganes.png" },
+      visitante: {
+        nombre: "Villarreal",
+        escudo: "/escudos/liga/villareal.png",
+      },
+      resultado: ["–", "–"],
+      fecha: "12/05/25",
+      hora: "18:30",
+    },
+    {
+      local: { nombre: "Cádiz", escudo: "/escudos/liga/cadiz.png" },
+      visitante: {
+        nombre: "Valladolid",
+        escudo: "/escudos/liga/valladolid.png",
+      },
+      resultado: ["–", "–"],
+      fecha: "12/05/25",
+      hora: "21:00",
     },
   ];
 
@@ -80,13 +93,13 @@ function LigaEspañola() {
       <nav className="flex gap-6 border-b border-neutral-900 pb-4 mb-6 text-sm text-gray-400 mt-7">
         <Link
           to="/ligaespañola"
-          className="text-white font-semibold border-b-2 border-white"
+          className=" hover:text-green-400 cursor-pointer transition-colors"
         >
           Resultados
         </Link>
         <Link
-          to="/calendarioliga"
-          className="hover:text-green-400 cursor-pointer transition-colors"
+          to="/calendario"
+          className="text-white font-semibold border-b-2 border-white"
         >
           Calendario
         </Link>
@@ -105,9 +118,9 @@ function LigaEspañola() {
       </nav>
       <div className="mb-6">
         <h2 className="text-3xl font-extrabold mb-1 tracking-wide">
-          Resultados recientes
+          Próximos partidos
         </h2>
-        <p className="text-md text-gray-300">Jornada 34</p>
+        <p className="text-md text-gray-300">Jornada 35</p>
       </div>
 
       {/* Tarjetas */}
@@ -137,16 +150,16 @@ function LigaEspañola() {
               </div>
             </div>
 
-            {/* Resultado */}
-            <div className="flex flex-col items-center font-bold text-xl">
+            {/* Resultado futuro */}
+            <div className="flex flex-col items-center font-bold text-xl text-gray-400">
               <span>{partido.resultado[0]}</span>
               <span>{partido.resultado[1]}</span>
             </div>
 
-            {/* Fecha */}
+            {/* Fecha y hora */}
             <div className="text-right text-sm text-gray-400">
               <p>{partido.fecha}</p>
-              <p className="text-xs italic">Finalizado</p>
+              <p>{partido.hora}</p>
             </div>
           </div>
         ))}
@@ -156,4 +169,4 @@ function LigaEspañola() {
   );
 }
 
-export default LigaEspañola;
+export default CalendarioLiga;
