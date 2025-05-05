@@ -27,7 +27,7 @@ export const EditarPerfil = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 relative p-4">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-tr from-black to-green-500 relative p-4">
       <Link
         to="/mainhome"
         className="absolute top-6 left-6 text-white hover:text-green-200 transition text-xl font-semibold flex items-center"
@@ -35,7 +35,7 @@ export const EditarPerfil = () => {
         <span className="mr-2">←</span> Volver
       </Link>
 
-      <div className="bg-white shadow-xl rounded-lg w-full max-w-5xl px-6 py-8 flex flex-col md:grid md:grid-cols-2 gap-10 gap-y-8">
+      <div className="bg-green-100 shadow-xl rounded-lg w-full max-w-5xl px-6 py-8 flex flex-col md:grid md:grid-cols-2 gap-10 gap-y-8">
         {/* info del usuario a la izquierda */}
         <div className="flex flex-col space-y-6">
           <h2 className="text-2xl font-semibold text-gray-800">
