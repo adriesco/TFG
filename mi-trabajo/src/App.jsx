@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
 import Registro from "./components/Registro";
 import IniciarSesion from "./components/IniciarSesion";
 import Home from "./components/Home";
@@ -33,7 +32,6 @@ function App() {
           <Route path="/editarperfil" element={<EditarPerfil />} />
           <Route path="/ligaespañola" element={<LigaEspañola />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

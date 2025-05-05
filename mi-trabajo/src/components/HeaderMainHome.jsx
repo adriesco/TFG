@@ -14,7 +14,7 @@ function HeaderMainHome() {
   }, []);
 
   return (
-    <header className="bg-gradient-to-r from-green-600 to-green-500 text-white px-6 py-4 shadow-md flex items-center justify-between relative z-10">
+    <header className=" text-white px-6 py-4 shadow-md flex items-center justify-between relative z-10">
       {/* Menú lateral */}
       <div className="relative">
         <input type="checkbox" id="menu-toggle" className="peer hidden" />
