@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Privacidad from "./components/Privacidad";
 import TerminosCondiciones from "./components/TerminosCondiciones";
 import HeaderMainHome from "./components/HeaderMainHome";
+import HeaderLigaEspaña from "./components/HeaderLigaEspaña";
+import CalendarioLiga from "./components/CalendarioLiga";
 import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 import EditarPerfil from "./components/EditarPerfil";
@@ -29,8 +31,10 @@ function App() {
           />
           <Route path="/mainhome" element={<MainHome />} />
           <Route path="/headermainhome" element={<HeaderMainHome />} />
+          <Route path="/headerligaespaña" element={<HeaderLigaEspaña />} />
           <Route path="/editarperfil" element={<EditarPerfil />} />
           <Route path="/ligaespañola" element={<LigaEspañola />} />
+          <Route path="/calendarioliga" element={<CalendarioLiga />} />
         </Routes>
       </div>
     </Router>
