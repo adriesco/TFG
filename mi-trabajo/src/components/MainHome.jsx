@@ -85,11 +85,11 @@ function MainHome() {
         </section>
 
         {/* Ligas por país */}
-        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
+        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow-lg p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-4 text-green-100">
             🌍 Ligas por País
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
             <Link to="/ligaespañola">
               <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer hover:scale-[1.02]">
                 <img
@@ -101,39 +101,25 @@ function MainHome() {
                 <p className="text-sm text-gray-800">España</p>
               </div>
             </Link>
-
-            <Link to="/premier">
-              <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer hover:scale-[1.02]">
-                <img
-                  src="/logos/inglesa.png"
-                  alt="Premier League"
-                  className="w-20 h-20 object-contain mb-2"
-                />
-                <h3 className="text-lg font-semibold text-gray-800">
-                  Premier League
-                </h3>
-                <p className="text-sm text-gray-900">Inglaterra</p>
-              </div>
-            </Link>
           </div>
         </section>
 
         {/* Jugadores destacados o estadísticas */}
         <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100">
-            📊 Jugadores Destacados
+            📊 Jugadores Destacados de La Liga EA
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
               <img
-                src="/jugadores/haaland.png"
-                alt="Haaland"
+                src="/jugadores/vinicius.png"
+                alt="Vinicius Jr."
                 className="w-24 h-24 object-contain mb-2 rounded-full"
               />
               <h3 className="text-lg font-semibold text-gray-800">
-                Erling Haaland
+                Vinicius Jr.
               </h3>
-              <p className="text-sm text-gray-800">32 goles</p>
+              <p className="text-sm text-gray-800"> 23 goles</p>
             </div>
 
             <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
@@ -164,19 +150,19 @@ function MainHome() {
 
         <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100">
-            🗓️ Próximos Partidos
+            🗓️ Próximos Partidos Importantes
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <img
-                  src="/escudos/realmadrid.png"
+                  src="/escudos/liga/realmadrid.png"
                   alt="Real Madrid"
                   className="w-10 h-10"
                 />
                 <span className="text-lg font-bold text-gray-800">vs</span>
                 <img
-                  src="/escudos/barcelona.png"
+                  src="/escudos/liga/barcelona.png"
                   alt="Barcelona"
                   className="w-10 h-9"
                 />
@@ -185,66 +171,70 @@ function MainHome() {
                 Real Madrid vs Barcelona
               </h3>
               <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Dom, 14 Abril – 21:00
+                Domingo, 14 Mayo – 21:00
               </span>
             </div>
             <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <img
-                  src="/escudos/arsenal.png"
-                  alt="Arsenal"
+                  src="/escudos/liga/realsociedad.png"
+                  alt="Real Sociedad"
                   className="w-10 h-10"
                 />
                 <span className="text-lg font-bold text-gray-800">vs</span>
                 <img
-                  src="/escudos/city.png"
-                  alt="Manchester City"
+                  src="/escudos/liga/athletic.png"
+                  alt="Athletic Club"
                   className="w-10 h-10"
                 />
               </div>
               <h3 className="text-gray-700 font-semibold mb-1">
-                Arsenal vs Manchester City
+                Real Sociedad vs Athletic Club
               </h3>
               <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Sáb, 13 Abril – 18:30
+                Miercoles, 17 Mayo – 18:30
               </span>
             </div>
             <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
                 <img
-                  src="/escudos/inter.png"
-                  alt="Inter"
+                  src="/escudos/liga/leganes.png"
+                  alt="Leganes"
                   className="w-10 h-10"
                 />
                 <span className="text-lg font-bold text-gray-800">vs</span>
                 <img
-                  src="/escudos/lazio.png"
-                  alt="Lazio"
+                  src="/escudos/liga/getafe.png"
+                  alt="Getafe"
                   className="w-10 h-8"
                 />
               </div>
               <h3 className="text-gray-700 font-semibold mb-1">
-                Inter vs Lazio
+                Leganes vs Getafe
               </h3>
               <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Dom, 18 Mayo – 15:00
+                Jueves, 18 Mayo – 15:00
               </span>
             </div>
             <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
               <div className="flex items-center justify-center gap-4 mb-2">
-                <img src="/escudos/psg.png" alt="PSG" className="w-10 h-10" />
+                <img
+                  src="/escudos/liga/rayovallecano.png"
+                  alt="Rayo Vallecano"
+                  className="w-10 h-10"
+                />
                 <span className="text-lg font-bold text-gray-800">vs</span>
                 <img
-                  src="/escudos/marsella.png"
+                  src="/escudos/liga/atleticomadrid.png"
                   alt="Marsella"
-                  className="w-10 h-10"
+                  className="w-15 h-10"
                 />
               </div>
               <h3 className="text-gray-700 font-semibold mb-1">
-                PSG vs Marsella
+                Rayo Vallecano vs Atletico de Madrid
               </h3>
               <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Vie, 12 Abril – 20:00
+                Vie, 22 Mayo – 20:00
               </span>
             </div>
           </div>
