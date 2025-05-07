@@ -12,6 +12,8 @@ import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
 import EditarPerfil from "./components/EditarPerfil";
 import LigaEspañola from "./components/LigaEspañola";
+import Clasificacion from "./components/Clasificacion";
+import FichajesLiga from "./components/FichajesLiga";
 function App() {
   return (
     <Router>
@@ -35,6 +37,8 @@ function App() {
           <Route path="/editarperfil" element={<EditarPerfil />} />
           <Route path="/ligaespañola" element={<LigaEspañola />} />
           <Route path="/calendarioliga" element={<CalendarioLiga />} />
+          <Route path="/clasificacion" element={<Clasificacion />} />
+          <Route path="/fichajesliga" element={<FichajesLiga />} />
         </Routes>
       </div>
     </Router>
