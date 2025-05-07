@@ -243,7 +243,7 @@ function Clasificación() {
         >
           Clasificación
         </Link>
-        <Link to="/fichajes" className="hover:text-green-400">
+        <Link to="/fichajesliga" className="hover:text-green-400">
           Fichajes
         </Link>
       </nav>

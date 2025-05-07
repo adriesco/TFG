@@ -110,7 +110,7 @@ function CalendarioLiga() {
           Clasificación
         </Link>
         <Link
-          to="/fichajes"
+          to="/fichajesliga"
           className="hover:text-green-400 cursor-pointer transition-colors"
         >
           Fichajes
