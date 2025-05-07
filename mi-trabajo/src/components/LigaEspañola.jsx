@@ -1,4 +1,5 @@
-import HeaderLigaEspaña from "./HeaderLigaEspaña";
+import HeaderLigas from "./HeaderLigas";
+import HeaderLigasEspana from "./HeaderLigaEspaña";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -74,7 +75,8 @@ function LigaEspañola() {
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-black to-green-500 text-white px-6 py-6">
-      <HeaderLigaEspaña />
+      <HeaderLigas />
+      <HeaderLigasEspana />
 
       {/* Navegación */}
       <nav className="flex gap-6 border-b border-neutral-900 pb-4 mb-6 text-sm text-gray-400 mt-7">

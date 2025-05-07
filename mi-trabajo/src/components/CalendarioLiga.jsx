@@ -1,5 +1,7 @@
 import HeaderLigaEspaña from "./HeaderLigaEspaña";
 import Footer from "./Footer";
+import React from "react";
+import HeaderLigas from "./HeaderLigas";
 import { Link } from "react-router-dom";
 
 function CalendarioLiga() {
@@ -87,6 +89,7 @@ function CalendarioLiga() {
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-black to-green-500 text-white px-6 py-6">
+      <HeaderLigas />
       <HeaderLigaEspaña />
 
       {/* Navegación */}

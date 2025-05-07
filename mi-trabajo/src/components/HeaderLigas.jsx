@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function HeaderMainHome() {
+function HeaderLigas() {
   const [avatar, setAvatar] = useState("default.avif");
   const [nombreUsuario, setNombreUsuario] = useState("Usuario");
 
@@ -15,62 +15,31 @@ function HeaderMainHome() {
 
   return (
     <header className="text-white px-4 py-3 flex flex-wrap items-center justify-between gap-4 relative z-10">
-      {/* Menú lateral */}
-      <div className="relative">
-        <input type="checkbox" id="menu-toggle" className="peer hidden" />
-        <label
-          htmlFor="menu-toggle"
-          className="cursor-pointer text-lg px-3 py-2 bg-green-900 hover:bg-green-950 rounded-lg transition flex items-center gap-2"
+      <Link
+        to="/mainhome"
+        className="text-lg px-3 py-2 bg-green-900 hover:bg-green-950 rounded-lg transition flex items-center gap-2"
+      >
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <span className="hidden sm:block">Menú</span>
-        </label>
-
-        <ul className="absolute top-14 left-0 bg-green-700 text-white shadow-xl rounded-lg w-52 p-2 space-y-2 hidden peer-checked:block animate-fade-in-down z-50">
-          <li>
-            <Link
-              to="/preguntasfrecuentes"
-              className="block px-4 py-2 hover:bg-green-500 rounded"
-            >
-              Preguntas Frecuentes
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/terminoscondiciones"
-              className="block px-4 py-2 hover:bg-green-500 rounded"
-            >
-              Términos y Condiciones
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/politicaprivacidad"
-              className="block px-4 py-2 hover:bg-green-500 rounded"
-            >
-              Política de Privacidad
-            </Link>
-          </li>
-        </ul>
-      </div>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+        <span className="hidden sm:block">Inicio</span>
+      </Link>
 
       <h1 className="text-xl sm:text-2xl font-bold whitespace-nowrap">
         ⚽ GoFootball
       </h1>
 
-      {/* idiomas */}
+      {/* Idioma  */}
       <div className="flex items-center gap-3 sm:gap-4 ml-auto">
         <select className="bg-transparent border border-white text-xs px-2 py-1 rounded text-white">
           <option value="ES">ES</option>
@@ -127,4 +96,4 @@ function HeaderMainHome() {
   );
 }
 
-export default HeaderMainHome;
+export default HeaderLigas;

@@ -1,6 +1,8 @@
 import HeaderLigaEspaña from "./HeaderLigaEspaña";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import React from "react";
+import HeaderLigas from "./HeaderLigas";
 
 function Clasificación() {
   const equipos = [
@@ -228,6 +230,7 @@ function Clasificación() {
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-black to-green-500 text-white px-6 py-6">
+      <HeaderLigas />
       <HeaderLigaEspaña />
 
       <nav className="flex gap-6 border-b border-neutral-900 pb-4 mb-6 text-sm text-gray-400 mt-7">
@@ -254,7 +257,7 @@ function Clasificación() {
         </h2>
       </div>
 
-      <div className="flex justify-end mt-4 text-green-100 text-sm pr-2">
+      <div className="hidden md:flex justify-end mt-4 text-green-100 text-sm pr-2">
         <div className="flex gap-6">
           <span className="w-6 text-right">PJ</span>
           <span className="w-6 text-right">G</span>
@@ -269,18 +272,40 @@ function Clasificación() {
         {equipos.map((equipo) => (
           <div
             key={equipo.posicion}
-            className="flex justify-between items-center border-b border-gray-900 py-2 hover:shadow-green-500/20 transition-all duration-500 hover:scale-[1.02] hover:bg-green-400"
+            className="flex flex-col md:flex-row md:justify-between md:items-center border-b border-gray-900 py-3 px-2 hover:shadow-green-500/20 transition-all duration-300 hover:scale-[1.01] hover:bg-green-500/10 rounded-md"
           >
-            <div className="flex items-center gap-4">
-              <span className="w-6 text-right">{equipo.posicion}</span>
+            <div className="flex items-center gap-3">
+              <span className="w-6 text-right text-sm">{equipo.posicion}</span>
               <img
                 src={equipo.escudo}
                 alt={equipo.nombre}
                 className="w-6 h-6"
               />
-              <span>{equipo.nombre}</span>
+              <span className="text-sm font-medium">{equipo.nombre}</span>
             </div>
-            <div className="flex gap-6 text-sm">
+
+            {/* Versión móvil: columnas apiladas */}
+            <div className="grid grid-cols-3 gap-2 text-xs mt-2 md:hidden text-right ml-8">
+              <span className="text-gray-300">
+                PJ: <span className="text-white">{equipo.pj}</span>
+              </span>
+              <span className="text-gray-300">
+                G: <span className="text-white">{equipo.g}</span>
+              </span>
+              <span className="text-gray-300">
+                E: <span className="text-white">{equipo.e}</span>
+              </span>
+              <span className="text-gray-300">
+                P: <span className="text-white">{equipo.p}</span>
+              </span>
+              <span className="text-gray-300">
+                DG: <span className="text-white">{equipo.dg}</span>
+              </span>
+              <span className="text-gray-300 font-semibold">
+                PTS: <span className="text-white">{equipo.pts}</span>
+              </span>
+            </div>
+            <div className="hidden md:flex gap-6 text-sm">
               <span className="w-6 text-right">{equipo.pj}</span>
               <span className="w-6 text-right">{equipo.g}</span>
               <span className="w-6 text-right">{equipo.e}</span>

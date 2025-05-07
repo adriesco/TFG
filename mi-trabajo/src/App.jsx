@@ -14,6 +14,7 @@ import EditarPerfil from "./components/EditarPerfil";
 import LigaEspañola from "./components/LigaEspañola";
 import Clasificacion from "./components/Clasificacion";
 import FichajesLiga from "./components/FichajesLiga";
+import HeaderLigas from "./components/HeaderLigas";
 function App() {
   return (
     <Router>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/calendarioliga" element={<CalendarioLiga />} />
           <Route path="/clasificacion" element={<Clasificacion />} />
           <Route path="/fichajesliga" element={<FichajesLiga />} />
+          <Route path="/headerligas" element={<HeaderLigas />} />
         </Routes>
       </div>
     </Router>
