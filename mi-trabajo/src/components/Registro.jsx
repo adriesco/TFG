@@ -1,8 +1,54 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function Registro() {
+  // En tu frontend (React)
+  const [formData, setFormData] = useState({
+    nombre: "",
+    usuario: "",
+    email: "",
+    password: "", // Cambiado de contraseña
+    confirmPassword: "",
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("⚠️ Las contraseñas no coinciden");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/registro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          usuario: formData.usuario,
+          email: formData.email,
+          password: formData.password, // Envía el valor real del formulario
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Error desconocido");
+
+      console.log("Registro exitoso:", data);
+      navigate("/iniciarsesion"); // Redirige a la página de inicio de sesión
+    } catch (error) {
+      console.error("Error completo:", error);
+      alert(`❌ Fallo en registro: ${error.message}`);
+    }
+  };
   return (
     <div className="bg-gradient-to-tr from-black to-green-500 text-white min-h-screen flex flex-col justify-between">
       <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
@@ -11,7 +57,6 @@ export default function Registro() {
             Crear una cuenta en{" "}
             <span className="text-green-300">GoFootball</span>
           </h1>
-
           <svg
             className="w-24 h-24 md:w-28 md:h-28"
             viewBox="0 0 1024 1024"
@@ -35,13 +80,19 @@ export default function Registro() {
           </svg>
         </div>
 
-        <form className="bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md space-y-4"
+        >
           <div>
             <label className="block font-semibold">Nombre</label>
             <input
               type="text"
+              name="nombre"
               placeholder="Nombre"
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
+              required
             />
           </div>
 
@@ -49,7 +100,9 @@ export default function Registro() {
             <label className="block font-semibold">Nombre de Usuario</label>
             <input
               type="text"
-              placeholder="Nombre"
+              name="usuario"
+              placeholder="Usuario"
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
             />
           </div>
@@ -58,8 +111,11 @@ export default function Registro() {
             <label className="block font-semibold">Email</label>
             <input
               type="email"
+              name="email"
               placeholder="correo@example.com"
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
+              required
             />
           </div>
 
@@ -67,8 +123,11 @@ export default function Registro() {
             <label className="block font-semibold">Contraseña</label>
             <input
               type="password"
+              name="password"
               placeholder="********"
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
+              required
             />
           </div>
 
@@ -76,18 +135,20 @@ export default function Registro() {
             <label className="block font-semibold">Confirmar contraseña</label>
             <input
               type="password"
+              name="confirmPassword"
               placeholder="********"
+              onChange={handleChange}
               className="w-full p-2 border rounded-lg focus:ring focus:ring-green-400"
+              required
             />
           </div>
 
-          {/* Botón de Registrarse con Link a MainHome */}
-          <Link
-            to="/mainhome"
+          <button
+            type="submit"
             className="block w-full bg-green-500 text-white font-semibold py-2 text-center rounded-lg hover:bg-green-700 transition"
           >
             Registrarse
-          </Link>
+          </button>
 
           <p className="text-sm mt-2">
             ¿Ya tienes cuenta?{" "}
@@ -97,7 +158,6 @@ export default function Registro() {
           </p>
         </form>
       </main>
-
       <Footer />
     </div>
   );
