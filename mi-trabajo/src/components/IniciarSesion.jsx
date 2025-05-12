@@ -1,31 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function IniciarSesion() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: "", // Cambiado de username a email para coincidir con tu registro
+    email: "",
     password: "",
   });
+
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Estado para carga
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     try {
       const response = await fetch("http://localhost:5000/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,
@@ -34,15 +41,30 @@ function IniciarSesion() {
 
       const data = await response.json();
 
-      if (!data.success) {
-        throw new Error(data.message || "Error en login");
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || data.error || "Credenciales incorrectas"
+        );
       }
 
-      // Guardar usuario en localStorage
-      localStorage.setItem("user", JSON.stringify(data.user));
-      navigate("/mainhome");
+      localStorage.setItem("usuario", data.user.usuario);
+      localStorage.setItem(
+        "nombreUsuario",
+        data.user.nombre || data.user.usuario
+      );
+      localStorage.setItem(
+        "avatarSeleccionado",
+        data.user.avatar || "default.avif"
+      );
+
+      toast.success("Inicio de sesión exitoso");
+
+      setTimeout(() => {
+        navigate("/mainhome");
+      }, 2000);
     } catch (error) {
-      setError(error.message);
+      console.error("Error en el inicio de sesión:", error);
+      setError(error.message || "Ocurrió un error al iniciar sesión");
     } finally {
       setIsLoading(false);
     }
@@ -125,10 +147,12 @@ function IniciarSesion() {
               </Link>
             </p>
           </div>
+          {error && <p className="text-red-300 mt-4">{error}</p>}
         </form>
       </main>
 
       <Footer />
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   );
 }
