@@ -63,34 +63,83 @@ app.post("/registro", async (req, res) => {
     });
   }
 });
-
-// Ruta de Login (nueva)
+// Ruta de Login corregida
 app.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
+  console.log("📨 Body recibido:", req.body);
 
-    // 1. Buscar usuario en MySQL
-    const [users] = await pool.query(
-      "SELECT id, nombre, email, usuario FROM users WHERE email = ? AND password = ?",
+  const { email, password } = req.body;
+  if (!email?.includes("@") || !password) {
+    return res.status(400).json({
+      success: false,
+      error: "Validación fallida",
+      message: "Email y contraseña son requeridos",
+    });
+  }
+
+  try {
+    const [rows] = await pool.query(
+      `SELECT * FROM users WHERE email = ? AND password = ?`,
       [email, password]
     );
 
-    if (users.length === 0) {
+    if (rows.length === 0) {
       return res.status(401).json({
         success: false,
+        error: "Usuario no encontrado",
         message: "Email o contraseña incorrectos",
       });
     }
 
-    // 2. Responder con los datos del usuario (sin password)
-    const user = users[0];
+    const user = rows[0];
+    console.log("✅ Login exitoso. Usuario:", user.usuario);
+
     res.json({
       success: true,
-      message: "Inicio de sesión exitoso",
-      user,
+      user: {
+        usuario: user.usuario,
+        nombre: user.nombre,
+        email: user.email,
+        avatar: user.avatar,
+      },
     });
-  } catch (error) {
-    console.error("Error en login:", error);
+  } catch (err) {
+    console.error("💥 Error MySQL:", err);
+    res.status(500).json({
+      success: false,
+      error: "Error en base de datos",
+      message: err.message,
+    });
+  }
+});
+
+// Ruta para obtener los datos de un usuario por su nombre de usuario
+app.get("/usuario/:username", async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const [rows] = await pool.query(`SELECT * FROM users WHERE usuario = ?`, [
+      username,
+    ]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado",
+      });
+    }
+
+    const user = rows[0];
+    res.json({
+      success: true,
+      user: {
+        nombre: user.nombre,
+        email: user.email,
+        usuario: user.usuario,
+        avatar: user.avatar,
+      },
+    });
+  } catch (err) {
+    console.error("💥 Error al obtener usuario:", err.message);
     res.status(500).json({
       success: false,
       message: "Error en el servidor",
@@ -98,6 +147,100 @@ app.post("/login", async (req, res) => {
   }
 });
 
+// Ruta para actualizar el perfil
+app.post("/actualizar-perfil", async (req, res) => {
+  const { username, name, email, newUsername, avatar } = req.body;
+
+  if (!username || !name || !email || !newUsername) {
+    return res.status(400).json({
+      success: false,
+      message: "Todos los campos son obligatorios",
+    });
+  }
+
+  try {
+    const [result] = await pool.query(
+      `UPDATE users 
+       SET nombre = ?, email = ?, usuario = ?, avatar = ? 
+       WHERE usuario = ?`,
+      [name, email, newUsername, avatar, username]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Perfil actualizado correctamente",
+    });
+  } catch (error) {
+    console.error("💥 Error al actualizar perfil:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Error al actualizar el perfil",
+    });
+  }
+});
+
+// Ruta para cambiar la contraseña (sin bcrypt)
+app.post("/cambiar-password", async (req, res) => {
+  const { username, currentPassword, newPassword } = req.body;
+
+  if (!username || !currentPassword || !newPassword) {
+    return res.status(400).json({
+      success: false,
+      message: "Todos los campos son obligatorios",
+    });
+  }
+
+  try {
+    // 1. Obtener la contraseña actual
+    const [rows] = await pool.query(
+      "SELECT password FROM users WHERE usuario = ?",
+      [username]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado",
+      });
+    }
+
+    const contraseñaHasheada = rows[0].password;
+
+    // 2. Comparar directamente (sin bcrypt)
+    if (currentPassword !== contraseñaHasheada) {
+      return res.status(401).json({
+        success: false,
+        message: "Contraseña actual incorrecta",
+      });
+    }
+
+    // 3. Actualizar la contraseña directamente
+    await pool.query("UPDATE users SET password = ? WHERE usuario = ?", [
+      newPassword,
+      username,
+    ]);
+
+    res.json({
+      success: true,
+      message: "Contraseña actualizada correctamente",
+    });
+  } catch (error) {
+    console.error("💥 Error al cambiar contraseña:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Error al cambiar la contraseña",
+    });
+  }
+});
+
+// ================== SERVIDOR ================== //
 // Puerto configurable
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
