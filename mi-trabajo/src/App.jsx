@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Privacidad from "./components/Privacidad";
 import TerminosCondiciones from "./components/TerminosCondiciones";
 import HeaderMainHome from "./components/HeaderMainHome";
-import HeaderLigaEspaña from "./components/HeaderLigaEspaña";
+import HeaderLigaEspaña from "./components/SubHeaderLiga";
 import CalendarioLiga from "./components/CalendarioLiga";
 import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
@@ -14,7 +14,8 @@ import EditarPerfil from "./components/EditarPerfil";
 import LigaEspañola from "./components/LigaEspañola";
 import Clasificacion from "./components/Clasificacion";
 import FichajesLiga from "./components/FichajesLiga";
-import HeaderLigas from "./components/HeaderLigas";
+import HeaderLigas from "./components/HeaderLiga";
+
 function App() {
   return (
     <Router>

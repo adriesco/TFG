@@ -17,7 +17,7 @@ function HeaderLigas() {
     <header className="text-white px-4 py-3 flex flex-wrap items-center justify-between gap-4 relative z-10">
       <Link
         to="/mainhome"
-        className="text-lg px-3 py-2 bg-green-900 hover:bg-green-950 rounded-lg transition flex items-center gap-2"
+        className="text-lg px-3 py-2 hover:bg-blue-700 rounded-lg transition flex items-center gap-2"
       >
         <svg
           className="w-5 h-5"
@@ -45,20 +45,25 @@ function HeaderLigas() {
           <option value="ES">ES</option>
         </select>
 
-        {/* Notificación */}
-        <svg
-          className="w-5 h-5 sm:w-6 sm:h-6 text-white hover:text-yellow-400 transition"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"
-          />
-        </svg>
+        <button className="p-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded hover:bg-yellow-500 transition">
+          <Link to="/iniciarsesion" title="Iniciar Sesión">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="27"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M14 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" />
+              <line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+          </Link>
+        </button>
 
         {/* Avatar y nombre */}
         <div className="flex items-center space-x-2 max-w-[140px] overflow-hidden">

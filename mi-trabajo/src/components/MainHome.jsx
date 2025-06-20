@@ -7,7 +7,7 @@ function MainHome() {
     <div className="min-h-screen bg-gradient-to-tr from-black to-green-500">
       <Header />
 
-      <main className="p-6 space-y-10 ">
+      <main className="p-6 space-y-10">
         <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100 flex items-center gap-2">
             🗞️ Últimas Noticias
@@ -16,6 +16,7 @@ function MainHome() {
             <a
               href="https://www.marca.com/futbol/barcelona/2025/04/18/messi-habla-salida-psg-mi-intencion-volver-barcelona-pudo.html"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-[1.02] overflow-hidden px-5"
             >
               <img
@@ -40,7 +41,8 @@ function MainHome() {
             <a
               href="https://www.marca.com/futbol/real-madrid/2024/06/03/64c7ab27e2704e5f138b458d.html"
               target="_blank"
-              className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition px-5 transform hover:scale-[1.02] overflow-hidden "
+              rel="noopener noreferrer"
+              className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition px-5 transform hover:scale-[1.02] overflow-hidden"
             >
               <img
                 src="/noticias/mbappenoti.jpg"
@@ -62,6 +64,7 @@ function MainHome() {
             <a
               href="https://www.sport.es/es/noticias/futbol-internacional/nuevas-reglas-fifa-cambiar-futbol-114677958"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition transform px-5 hover:scale-[1.02] overflow-hidden"
             >
               <img
@@ -71,7 +74,7 @@ function MainHome() {
               />
               <div className="p-4 flex flex-col justify-between">
                 <div>
-                  <span className="text-xs bg-yellow-500 text-yellow-950 px-2 py-1 rounded-full mb-2 ">
+                  <span className="text-xs bg-yellow-500 text-yellow-950 px-2 py-1 rounded-full mb-2">
                     REGLAMENTO
                   </span>
                   <h3 className="text-lg font-semibold text-gray-800">
@@ -119,7 +122,7 @@ function MainHome() {
               <h3 className="text-lg font-semibold text-gray-800">
                 Vinicius Jr.
               </h3>
-              <p className="text-sm text-gray-800"> 23 goles</p>
+              <p className="text-sm text-gray-800">23 goles</p>
             </div>
 
             <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
