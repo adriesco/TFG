@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-tr from-black to-green-500 text-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white">
       <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
         <h1 className="text-4xl font-extrabold mb-4 opacity-0 animate-fade-in delay-100">
           Bienvenido a <span className="text-green-400">GoFootball</span>

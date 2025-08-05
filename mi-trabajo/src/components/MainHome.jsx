@@ -4,11 +4,11 @@ import Footer from "../components/Footer";
 
 function MainHome() {
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-black to-green-500">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
       <Header />
 
       <main className="p-6 space-y-10">
-        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
+        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100 flex items-center gap-2">
             🗞️ Últimas Noticias
           </h2>
@@ -88,7 +88,7 @@ function MainHome() {
         </section>
 
         {/* Ligas por país */}
-        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow-lg p-6 border-green-300 border-2">
+        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow-lg p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-4 text-green-100">
             🌍 Ligas por País
           </h2>
@@ -108,7 +108,7 @@ function MainHome() {
         </section>
 
         {/* Jugadores destacados o estadísticas */}
-        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
+        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100">
             📊 Jugadores Destacados de La Liga EA
           </h2>
@@ -151,7 +151,7 @@ function MainHome() {
           </div>
         </section>
 
-        <section className="bg-gradient-to-tr from-black to-green-500 rounded-lg shadow p-6 border-green-300 border-2">
+        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
           <h2 className="text-2xl font-bold mb-6 text-green-100">
             🗓️ Próximos Partidos Importantes
           </h2>

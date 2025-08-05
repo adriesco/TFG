@@ -5,7 +5,7 @@ function TerminosCondiciones() {
   const fechaActual = new Date().toLocaleDateString("es-ES");
 
   return (
-    <main className="flex flex-col items-center justify-center flex-grow text-center p-6 bg-gradient-to-tr from-black to-green-500">
+    <main className="flex flex-col items-center justify-center flex-grow text-center p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
       <Link
         to="/mainhome"
         className="self-start mb-4 text-white hover:text-green-200 transition text-xl font-semibold"

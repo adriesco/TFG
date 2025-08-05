@@ -168,7 +168,7 @@ export const EditarPerfil = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-tr from-black to-green-500">
+      <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
         <div className="text-white text-xl">Cargando perfil...</div>
       </div>
     );

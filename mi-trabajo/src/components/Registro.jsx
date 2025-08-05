@@ -87,7 +87,7 @@ export default function Registro() {
   };
 
   return (
-    <div className="bg-gradient-to-tr from-black to-green-500 text-white min-h-screen flex flex-col justify-between">
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white min-h-screen flex flex-col justify-between">
       <main className="flex flex-col items-center justify-center flex-grow text-center p-6">
         <div className="flex items-center justify-center mb-6">
           <h1 className="text-3xl font-extrabold mr-4">
