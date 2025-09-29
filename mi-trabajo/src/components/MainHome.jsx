@@ -4,245 +4,186 @@ import Footer from "../components/Footer";
 
 function MainHome() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 flex flex-col">
       <Header />
+      <main className="flex-1 p-6">
+        <div className="max-w-6xl mx-auto space-y-12">
+          {/* Noticias destacadas */}
+          <section>
+            <h2 className="text-2xl font-bold mb-4 text-green-100">
+              📰 Noticias Destacadas
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  link: "https://www.marca.com/futbol/barcelona/2025/04/18/messi-habla-salida-psg-mi-intencion-volver-barcelona-pudo.html",
+                  img: "/noticias/messinoti.jpg",
+                  title: "Messi vuelve al Barcelona en 2026",
+                  date: "Marca - 10 Abr 2025",
+                },
+                {
+                  link: "https://www.marca.com/futbol/real-madrid/2024/06/03/64c7ab27e2704e5f138b458d.html",
+                  img: "/noticias/mbappenoti.jpg",
+                  title: "Mbappé ficha por el Real Madrid",
+                  date: "AS - 9 Ago 2024",
+                },
+                {
+                  link: "https://www.sport.es/es/noticias/futbol-internacional/nuevas-reglas-fifa-cambiar-futbol-114677958",
+                  img: "/noticias/normasnoti.jpg",
+                  title: "Nuevas reglas de la FIFA para 2026",
+                  date: "SPORT - 8 Abr 2025",
+                },
+              ].map((noticia, i) => (
+                <a
+                  key={i}
+                  href={noticia.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-200 rounded-lg shadow-md overflow-hidden flex flex-col h-full transform transition duration-500 hover:scale-105 hover:shadow-xl"
+                >
+                  <div className="w-full aspect-video overflow-hidden rounded-t-lg">
+                    <img
+                      src={noticia.img}
+                      alt={noticia.title}
+                      className="w-full h-full object-cover transform transition duration-500 ease-in-out group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col flex-1 justify-between">
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {noticia.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mt-2">{noticia.date}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
 
-      <main className="p-6 space-y-10">
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
-          <h2 className="text-2xl font-bold mb-6 text-green-100 flex items-center gap-2">
-            🗞️ Últimas Noticias
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a
-              href="https://www.marca.com/futbol/barcelona/2025/04/18/messi-habla-salida-psg-mi-intencion-volver-barcelona-pudo.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition transform hover:scale-[1.02] overflow-hidden px-5"
-            >
-              <img
-                src="/noticias/messinoti.jpg"
-                alt="Messi vuelve al Barcelona"
-                className="w-32 h-32 object-cover mt-2"
-              />
-              <div className="p-4 flex flex-col justify-between">
-                <div>
-                  <span className="text-xs bg-green-500 text-green-950 px-2 py-1 rounded-full mb-2 inline-block">
-                    FICHAJE
-                  </span>
+          {/* Ligas por país */}
+          <section>
+            <h2 className="text-2xl font-bold mb-4 text-green-100">🌍 Ligas</h2>
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+              <Link to="/ligaespañola">
+                <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer hover:scale-[1.02]">
+                  <img
+                    src="/logos/laliga.png"
+                    alt="LaLiga"
+                    className="w-16 h-16 object-contain mb-2"
+                  />
                   <h3 className="text-lg font-semibold text-gray-800">
-                    Messi vuelve al Barcelona en 2026
+                    LaLiga
                   </h3>
+                  <p className="text-sm text-gray-800">España</p>
                 </div>
-                <p className="text-sm text-gray-800 mt-1">
-                  Marca - 10 Abr 2025
-                </p>
-              </div>
-            </a>
-            <a
-              href="https://www.marca.com/futbol/real-madrid/2024/06/03/64c7ab27e2704e5f138b458d.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition px-5 transform hover:scale-[1.02] overflow-hidden"
-            >
-              <img
-                src="/noticias/mbappenoti.jpg"
-                alt="Mbappé ficha por el Real Madrid"
-                className="w-32 h-32 object-cover mt-2"
-              />
-              <div className="p-4 flex flex-col justify-between">
-                <div>
-                  <span className="text-xs bg-blue-400 text-blue-950 px-2 py-1 rounded-full mb-2 inline-block">
-                    REAL MADRID
+              </Link>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold mb-4 text-green-100">
+              🏆 Próximos Partidos
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                {
+                  home: "Real Madrid",
+                  homeLogo: "/escudos/liga/realmadrid.png",
+                  away: "Barcelona",
+                  awayLogo: "/escudos/liga/barcelona.png",
+                  date: "Dom, 14 Mayo – 21:00",
+                },
+                {
+                  home: "Real Sociedad",
+                  homeLogo: "/escudos/liga/realsociedad.png",
+                  away: "Athletic",
+                  awayLogo: "/escudos/liga/athletic.png",
+                  date: "Mié, 17 Mayo – 18:30",
+                },
+                {
+                  home: "Leganés",
+                  homeLogo: "/escudos/liga/leganes.png",
+                  away: "Getafe",
+                  awayLogo: "/escudos/liga/getafe.png",
+                  date: "Jue, 18 Mayo – 15:00",
+                },
+                {
+                  home: "Rayo Vallecano",
+                  homeLogo: "/escudos/liga/rayovallecano.png",
+                  away: "Atlético",
+                  awayLogo: "/escudos/liga/atleticomadrid.png",
+                  date: "Vie, 22 Mayo – 20:00",
+                },
+              ].map((match, i) => (
+                <div
+                  key={i}
+                  className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center hover:shadow-lg transition"
+                >
+                  <div className="flex items-center justify-center gap-3 mb-2">
+                    <img
+                      src={match.homeLogo}
+                      alt={match.home}
+                      className="w-8 h-8"
+                    />
+                    <span className="font-bold text-gray-800">vs</span>
+                    <img
+                      src={match.awayLogo}
+                      alt={match.away}
+                      className="w-8 h-8"
+                    />
+                  </div>
+                  <h3 className="text-gray-700 font-semibold text-sm">
+                    {match.home} vs {match.away}
+                  </h3>
+                  <span className="text-xs text-gray-600 bg-green-500 px-2 py-1 rounded-full mt-1">
+                    {match.date}
                   </span>
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    Mbappé ficha por el Real Madrid
-                  </h3>
                 </div>
-                <p className="text-sm text-gray-800 mt-1">AS - 9 Ago 2024</p>
-              </div>
-            </a>
-            <a
-              href="https://www.sport.es/es/noticias/futbol-internacional/nuevas-reglas-fifa-cambiar-futbol-114677958"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex bg-green-200 rounded-lg shadow-md hover:shadow-lg transition transform px-5 hover:scale-[1.02] overflow-hidden"
-            >
-              <img
-                src="/noticias/normasnoti.jpg"
-                alt="Nuevas reglas de la FIFA"
-                className="w-32 h-32 mt-2 object-cover"
-              />
-              <div className="p-4 flex flex-col justify-between">
-                <div>
-                  <span className="text-xs bg-yellow-500 text-yellow-950 px-2 py-1 rounded-full mb-2">
-                    REGLAMENTO
-                  </span>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-bold mb-4 text-green-100">
+              ⭐ Jugadores Destacados
+            </h2>
+            <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "Vinicius Jr.",
+                  stat: "23 goles",
+                  img: "/jugadores/vinicius.png",
+                },
+                {
+                  name: "Bellingham",
+                  stat: "15 asistencias",
+                  img: "/jugadores/jude.png",
+                },
+                {
+                  name: "Lamine Yamal",
+                  stat: "17 años",
+                  img: "/jugadores/lamine.png",
+                },
+              ].map((player, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition"
+                >
+                  <img
+                    src={player.img}
+                    alt={player.name}
+                    className="w-20 h-20 object-contain mb-2 rounded-full"
+                  />
                   <h3 className="text-lg font-semibold text-gray-800">
-                    Nuevas reglas de la FIFA para 2026
+                    {player.name}
                   </h3>
+                  <p className="text-sm text-gray-700">{player.stat}</p>
                 </div>
-                <p className="text-sm text-gray-800 mt-1">SPORT - 8 Abr 2025</p>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        {/* Ligas por país */}
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow-lg p-6 border-green-300 border-2">
-          <h2 className="text-2xl font-bold mb-4 text-green-100">
-            🌍 Ligas por País
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-            <Link to="/ligaespañola">
-              <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition cursor-pointer hover:scale-[1.02]">
-                <img
-                  src="/logos/laliga.png"
-                  alt="LaLiga"
-                  className="w-20 h-20 object-contain mb-2"
-                />
-                <h3 className="text-lg font-semibold text-gray-800">LaLiga</h3>
-                <p className="text-sm text-gray-800">España</p>
-              </div>
-            </Link>
-          </div>
-        </section>
-
-        {/* Jugadores destacados o estadísticas */}
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
-          <h2 className="text-2xl font-bold mb-6 text-green-100">
-            📊 Jugadores Destacados de La Liga EA
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/jugadores/vinicius.png"
-                alt="Vinicius Jr."
-                className="w-24 h-24 object-contain mb-2 rounded-full"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">
-                Vinicius Jr.
-              </h3>
-              <p className="text-sm text-gray-800">23 goles</p>
+              ))}
             </div>
-
-            <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/jugadores/jude.png"
-                alt="Bellingham"
-                className="w-24 h-24 object-contain mb-2 rounded-full"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">
-                Jude Bellingham
-              </h3>
-              <p className="text-sm text-gray-800">15 asistencias</p>
-            </div>
-
-            <div className="flex flex-col items-center bg-green-200 rounded-lg shadow p-4 hover:shadow-lg transition">
-              <img
-                src="/jugadores/lamine.png"
-                alt="Lamine Yamal"
-                className="w-24 h-24 object-contain mb-2 rounded-full"
-              />
-              <h3 className="text-lg font-semibold text-gray-800">
-                Lamine Yamal
-              </h3>
-              <p className="text-sm text-gray-800">17 años</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 rounded-lg shadow p-6 border-green-300 border-2">
-          <h2 className="text-2xl font-bold mb-6 text-green-100">
-            🗓️ Próximos Partidos Importantes
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <img
-                  src="/escudos/liga/realmadrid.png"
-                  alt="Real Madrid"
-                  className="w-10 h-10"
-                />
-                <span className="text-lg font-bold text-gray-800">vs</span>
-                <img
-                  src="/escudos/liga/barcelona.png"
-                  alt="Barcelona"
-                  className="w-10 h-9"
-                />
-              </div>
-              <h3 className="text-gray-700 font-semibold mb-1">
-                Real Madrid vs Barcelona
-              </h3>
-              <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Domingo, 14 Mayo – 21:00
-              </span>
-            </div>
-            <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <img
-                  src="/escudos/liga/realsociedad.png"
-                  alt="Real Sociedad"
-                  className="w-10 h-10"
-                />
-                <span className="text-lg font-bold text-gray-800">vs</span>
-                <img
-                  src="/escudos/liga/athletic.png"
-                  alt="Athletic Club"
-                  className="w-10 h-10"
-                />
-              </div>
-              <h3 className="text-gray-700 font-semibold mb-1">
-                Real Sociedad vs Athletic Club
-              </h3>
-              <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Miercoles, 17 Mayo – 18:30
-              </span>
-            </div>
-            <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <img
-                  src="/escudos/liga/leganes.png"
-                  alt="Leganes"
-                  className="w-10 h-10"
-                />
-                <span className="text-lg font-bold text-gray-800">vs</span>
-                <img
-                  src="/escudos/liga/getafe.png"
-                  alt="Getafe"
-                  className="w-10 h-8"
-                />
-              </div>
-              <h3 className="text-gray-700 font-semibold mb-1">
-                Leganes vs Getafe
-              </h3>
-              <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Jueves, 18 Mayo – 15:00
-              </span>
-            </div>
-            <div className="bg-green-200 p-4 rounded-lg shadow flex flex-col items-center text-center">
-              <div className="flex items-center justify-center gap-4 mb-2">
-                <img
-                  src="/escudos/liga/rayovallecano.png"
-                  alt="Rayo Vallecano"
-                  className="w-10 h-10"
-                />
-                <span className="text-lg font-bold text-gray-800">vs</span>
-                <img
-                  src="/escudos/liga/atleticomadrid.png"
-                  alt="Marsella"
-                  className="w-15 h-10"
-                />
-              </div>
-              <h3 className="text-gray-700 font-semibold mb-1">
-                Rayo Vallecano vs Atletico de Madrid
-              </h3>
-              <span className="text-sm text-gray-600 bg-green-500 px-3 py-1 rounded-full">
-                Vie, 22 Mayo – 20:00
-              </span>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
+
       <Footer />
     </div>
   );
