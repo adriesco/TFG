@@ -8,6 +8,8 @@ import React, { useState } from "react";
 function CalendarioLiga() {
   const [recordatorios, setRecordatorios] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
+  const [partidoSeleccionado, setPartidoSeleccionado] = useState(null);
+  const [equipoSeleccionado, setEquipoSeleccionado] = useState(null);
 
   const partidos = [
     {
@@ -19,6 +21,9 @@ function CalendarioLiga() {
       jornada: 35,
       destacado: true,
       tv: "DAZN",
+      estadio: "Santiago Bernabéu",
+      arbitro: "Mateu Lahoz",
+      temperatura: "18°C",
     },
     {
       local: { nombre: "Barcelona", escudo: "/escudos/liga/barcelona.png" },
@@ -28,6 +33,9 @@ function CalendarioLiga() {
       hora: "18:30",
       jornada: 35,
       tv: "Movistar+",
+      estadio: "Spotify Camp Nou",
+      arbitro: "Gil Manzano",
+      temperatura: "20°C",
     },
     {
       local: { nombre: "Sevilla", escudo: "/escudos/liga/sevilla.png" },
@@ -37,6 +45,9 @@ function CalendarioLiga() {
       hora: "20:45",
       jornada: 35,
       tv: "DAZN",
+      estadio: "Ramón Sánchez-Pizjuán",
+      arbitro: "Del Cerro Grande",
+      temperatura: "22°C",
     },
     {
       local: { nombre: "Athletic", escudo: "/escudos/liga/athletic.png" },
@@ -46,6 +57,9 @@ function CalendarioLiga() {
       hora: "17:00",
       jornada: 35,
       tv: "Movistar+",
+      estadio: "San Mamés",
+      arbitro: "Jesús Gil Manzano",
+      temperatura: "17°C",
     },
     {
       local: { nombre: "Atlético", escudo: "/escudos/liga/atleticomadrid.png" },
@@ -55,6 +69,9 @@ function CalendarioLiga() {
       hora: "21:00",
       jornada: 35,
       tv: "DAZN",
+      estadio: "Cívitas Metropolitano",
+      arbitro: "Guillermo Cuadra Fernández",
+      temperatura: "18°C",
     },
     {
       local: { nombre: "Osasuna", escudo: "/escudos/liga/osasuna.png" },
@@ -64,6 +81,9 @@ function CalendarioLiga() {
       hora: "19:15",
       jornada: 35,
       tv: "Movistar+",
+      estadio: "El Sadar",
+      arbitro: "Javier Alberola Rojas",
+      temperatura: "16°C",
     },
     {
       local: { nombre: "Alavés", escudo: "/escudos/liga/alaves.png" },
@@ -77,6 +97,9 @@ function CalendarioLiga() {
       jornada: 35,
       tv: "DAZN",
       derbi: true,
+      estadio: "Mendizorroza",
+      arbitro: "Ricardo de Burgos Bengoetxea",
+      temperatura: "15°C",
     },
     {
       local: { nombre: "Rayo", escudo: "/escudos/liga/rayovallecano.png" },
@@ -86,9 +109,12 @@ function CalendarioLiga() {
       hora: "16:00",
       jornada: 35,
       tv: "Movistar+",
+      estadio: "Vallecas",
+      arbitro: "Mario Melero López",
+      temperatura: "19°C",
     },
     {
-      local: { nombre: "Leganés", escudo: "/escudos/liga/leganes.png" },
+      local: { nombre: "Levante", escudo: "/escudos/liga/levante.png" },
       visitante: {
         nombre: "Villarreal",
         escudo: "/escudos/liga/villareal.png",
@@ -98,24 +124,29 @@ function CalendarioLiga() {
       hora: "18:30",
       jornada: 35,
       tv: "DAZN",
+      estadio: "Butarque",
+      arbitro: "Alejandro Hernández",
+      temperatura: "20°C",
     },
     {
-      local: { nombre: "Cádiz", escudo: "/escudos/liga/cadiz.png" },
+      local: { nombre: "Oviedo", escudo: "/escudos/liga/oviedo.png" },
       visitante: {
-        nombre: "Valladolid",
-        escudo: "/escudos/liga/valladolid.png",
+        nombre: "Elche",
+        escudo: "/escudos/liga/elche.png",
       },
       resultado: ["–", "–"],
       fecha: "12/05/25",
       hora: "21:00",
       jornada: 35,
       tv: "Movistar+",
+      estadio: "Nuevo Mirandilla",
+      arbitro: "Santiago Jaime Latre",
+      temperatura: "22°C",
     },
   ];
 
   // Función para añadir recordatorio
   const handleRecordatorio = (partido) => {
-    // Evitar duplicados
     if (
       !recordatorios.some(
         (r) =>
@@ -133,40 +164,129 @@ function CalendarioLiga() {
     }
   };
 
+  // Modal de alineación
+  const AlineacionModal = ({ equipo, onClose }) => {
+    if (!equipo) return null;
+
+    // ⚽ ejemplo de posiciones en un campo (4-3-3)
+    const posiciones = {
+      Portero: { top: "90%", left: "50%" },
+      Defensa1: { top: "70%", left: "20%" },
+      Defensa2: { top: "70%", left: "40%" },
+      Defensa3: { top: "70%", left: "60%" },
+      Defensa4: { top: "70%", left: "80%" },
+      Medio1: { top: "50%", left: "30%" },
+      Medio2: { top: "50%", left: "50%" },
+      Medio3: { top: "50%", left: "70%" },
+      Delantero1: { top: "25%", left: "30%" },
+      Delantero2: { top: "25%", left: "50%" },
+      Delantero3: { top: "25%", left: "70%" },
+    };
+
+    // ⚽ jugadores con foto
+    const jugadores = [
+      {
+        nombre: "Courtois",
+        pos: "Portero",
+        foto: "/jugadores/cour.jpg",
+      },
+      {
+        nombre: "A. Carreras",
+        pos: "Defensa1",
+        foto: "/jugadores/carreras.jpeg",
+      },
+      {
+        nombre: "Rüdiger",
+        pos: "Defensa2",
+        foto: "/jugadores/rudiger.jpeg",
+      },
+      {
+        nombre: "Militao",
+        pos: "Defensa3",
+        foto: "/jugadores/militao.jpeg",
+      },
+      {
+        nombre: "Carvajal",
+        pos: "Defensa4",
+        foto: "/jugadores/carvajal.jpeg",
+      },
+      {
+        nombre: "Valverde",
+        pos: "Medio1",
+        foto: "/jugadores/valverde.jpeg",
+      },
+      {
+        nombre: "Tchouaméni",
+        pos: "Medio2",
+        foto: "/jugadores/tch.jpeg",
+      },
+      {
+        nombre: "Jude",
+        pos: "Medio3",
+        foto: "/jugadores/jude.jpg",
+      },
+      {
+        nombre: "Vinícius Jr",
+        pos: "Delantero1",
+        foto: "/jugadores/vini.jpeg",
+      },
+      {
+        nombre: "Mbappé",
+        pos: "Delantero2",
+        foto: "/jugadores/mbappe.jpeg",
+      },
+      {
+        nombre: "Mastantuono",
+        pos: "Delantero3",
+        foto: "/jugadores/franco.jpeg",
+      },
+    ];
+
+    return (
+      <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
+        <div className="bg-green-900 relative rounded-xl shadow-lg w-11/12 sm:w-3/4 lg:w-2/3 h-[80vh] p-6">
+          <h3 className="text-2xl font-bold mb-4 text-center">
+            Alineación - {equipo.nombre}
+          </h3>
+
+          <div className="relative w-full h-full bg-green-700 rounded-lg border-4 border-white">
+            {jugadores.map((j, i) => (
+              <div
+                key={i}
+                className="absolute flex flex-col items-center text-white text-xs font-bold"
+                style={{
+                  top: posiciones[j.pos].top,
+                  left: posiciones[j.pos].left,
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                {/* Foto del jugador */}
+                <img
+                  src={j.foto}
+                  alt={j.nombre}
+                  className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-md"
+                />
+                <span className="mt-1">{j.nombre}</span>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white px-4 sm:px-6 py-6">
       <HeaderLigas />
       <HeaderLigaEspaña />
-
       <Toaster position="bottom-right" />
-
-      {/* Navegación */}
-      <nav className="flex gap-4 sm:gap-6 border-b border-gray-700 pb-4 mb-6 text-sm sm:text-base mt-7">
-        <Link
-          to="/ligaespañola"
-          className="text-gray-300 hover:text-green-400 transition-colors duration-200 pb-2 px-1"
-        >
-          Resultados
-        </Link>
-        <Link
-          to="/calendarioliga"
-          className=" text-white font-bold border-b-2 border-green-500 pb-2 px-1"
-        >
-          Calendario
-        </Link>
-        <Link
-          to="/clasificacion"
-          className="text-gray-300 hover:text-green-400 transition-colors duration-200 pb-2 px-1"
-        >
-          Clasificación
-        </Link>
-        <Link
-          to="/fichajesliga"
-          className="text-gray-300 hover:text-green-400 transition-colors duration-200 pb-2 px-1"
-        >
-          Fichajes
-        </Link>
-      </nav>
 
       {/* Encabezado */}
       <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
@@ -196,7 +316,8 @@ function CalendarioLiga() {
         {partidos.map((partido, i) => (
           <div
             key={i}
-            className={`relative rounded-xl p-5 flex flex-col gap-4 shadow-lg transition-all duration-300 hover:shadow-green-500/30 hover:-translate-y-1 border 
+            onClick={() => setPartidoSeleccionado(partido)}
+            className={`relative rounded-xl p-5 flex flex-col gap-4 shadow-lg transition-all duration-300 hover:shadow-green-500/30 hover:-translate-y-1 border cursor-pointer
               ${
                 partido.destacado
                   ? "border-yellow-400 bg-gradient-to-br from-gray-800 to-gray-900"
@@ -220,7 +341,11 @@ function CalendarioLiga() {
                 <img
                   src={partido.local.escudo}
                   alt={partido.local.nombre}
-                  className="w-10 h-10 object-contain"
+                  className="w-10 h-10 object-contain cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEquipoSeleccionado(partido.local);
+                  }}
                 />
                 <span className="font-medium truncate">
                   {partido.local.nombre}
@@ -247,7 +372,11 @@ function CalendarioLiga() {
                 <img
                   src={partido.visitante.escudo}
                   alt={partido.visitante.nombre}
-                  className="w-10 h-10 object-contain"
+                  className="w-10 h-10 object-contain cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setEquipoSeleccionado(partido.visitante);
+                  }}
                 />
               </div>
             </div>
@@ -255,7 +384,10 @@ function CalendarioLiga() {
             <div className="flex justify-between items-center mt-2 pt-2 border-t border-gray-700">
               <span className="text-xs text-gray-400">{partido.fecha}</span>
               <button
-                onClick={() => handleRecordatorio(partido)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRecordatorio(partido);
+                }}
                 className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-full transition-colors"
               >
                 + Recordatorio
@@ -270,7 +402,6 @@ function CalendarioLiga() {
         <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
           <div className="bg-gray-900 p-6 rounded-xl shadow-lg w-11/12 sm:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto">
             <h3 className="text-2xl font-bold mb-4">📝 Mis Recordatorios</h3>
-
             {recordatorios.length === 0 ? (
               <p className="text-gray-400">No tienes recordatorios aún.</p>
             ) : (
@@ -300,7 +431,6 @@ function CalendarioLiga() {
                 ))}
               </ul>
             )}
-
             <div className="flex justify-end mt-6">
               <button
                 onClick={() => setModalAbierto(false)}
@@ -311,6 +441,40 @@ function CalendarioLiga() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Modal de detalles de partido */}
+      {partidoSeleccionado && (
+        <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
+          <div className="bg-gray-900 p-6 rounded-xl shadow-lg w-11/12 sm:w-2/3 lg:w-1/2">
+            <h3 className="text-2xl font-bold mb-4">📋 Detalles del partido</h3>
+            <p>
+              <b>Estadio:</b> {partidoSeleccionado.estadio}
+            </p>
+            <p>
+              <b>Árbitro:</b> {partidoSeleccionado.arbitro}
+            </p>
+            <p>
+              <b>Temperatura:</b> {partidoSeleccionado.temperatura}
+            </p>
+            <div className="flex justify-end mt-6">
+              <button
+                onClick={() => setPartidoSeleccionado(null)}
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de alineaciones */}
+      {equipoSeleccionado && (
+        <AlineacionModal
+          equipo={equipoSeleccionado}
+          onClose={() => setEquipoSeleccionado(null)}
+        />
       )}
 
       <Footer />
