@@ -1,4 +1,4 @@
-import HeaderLigaEspaña from "./SubHeaderLiga";
+import HeaderLigasEspana from "./SubHeaderLiga";
 import Footer from "./Footer";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -9,7 +9,6 @@ function CalendarioLiga() {
   const [recordatorios, setRecordatorios] = useState([]);
   const [modalAbierto, setModalAbierto] = useState(false);
   const [partidoSeleccionado, setPartidoSeleccionado] = useState(null);
-  const [equipoSeleccionado, setEquipoSeleccionado] = useState(null);
 
   const partidos = [
     {
@@ -164,128 +163,33 @@ function CalendarioLiga() {
     }
   };
 
-  // Modal de alineación
-  const AlineacionModal = ({ equipo, onClose }) => {
-    if (!equipo) return null;
-
-    // ⚽ ejemplo de posiciones en un campo (4-3-3)
-    const posiciones = {
-      Portero: { top: "90%", left: "50%" },
-      Defensa1: { top: "70%", left: "20%" },
-      Defensa2: { top: "70%", left: "40%" },
-      Defensa3: { top: "70%", left: "60%" },
-      Defensa4: { top: "70%", left: "80%" },
-      Medio1: { top: "50%", left: "30%" },
-      Medio2: { top: "50%", left: "50%" },
-      Medio3: { top: "50%", left: "70%" },
-      Delantero1: { top: "25%", left: "30%" },
-      Delantero2: { top: "25%", left: "50%" },
-      Delantero3: { top: "25%", left: "70%" },
-    };
-
-    // ⚽ jugadores con foto
-    const jugadores = [
-      {
-        nombre: "Courtois",
-        pos: "Portero",
-        foto: "/jugadores/cour.jpg",
-      },
-      {
-        nombre: "A. Carreras",
-        pos: "Defensa1",
-        foto: "/jugadores/carreras.jpeg",
-      },
-      {
-        nombre: "Rüdiger",
-        pos: "Defensa2",
-        foto: "/jugadores/rudiger.jpeg",
-      },
-      {
-        nombre: "Militao",
-        pos: "Defensa3",
-        foto: "/jugadores/militao.jpeg",
-      },
-      {
-        nombre: "Carvajal",
-        pos: "Defensa4",
-        foto: "/jugadores/carvajal.jpeg",
-      },
-      {
-        nombre: "Valverde",
-        pos: "Medio1",
-        foto: "/jugadores/valverde.jpeg",
-      },
-      {
-        nombre: "Tchouaméni",
-        pos: "Medio2",
-        foto: "/jugadores/tch.jpeg",
-      },
-      {
-        nombre: "Jude",
-        pos: "Medio3",
-        foto: "/jugadores/jude.jpg",
-      },
-      {
-        nombre: "Vinícius Jr",
-        pos: "Delantero1",
-        foto: "/jugadores/vini.jpeg",
-      },
-      {
-        nombre: "Mbappé",
-        pos: "Delantero2",
-        foto: "/jugadores/mbappe.jpeg",
-      },
-      {
-        nombre: "Mastantuono",
-        pos: "Delantero3",
-        foto: "/jugadores/franco.jpeg",
-      },
-    ];
-
-    return (
-      <div className="fixed inset-0 bg-black/80 flex justify-center items-center z-50">
-        <div className="bg-green-900 relative rounded-xl shadow-lg w-11/12 sm:w-3/4 lg:w-2/3 h-[80vh] p-6">
-          <h3 className="text-2xl font-bold mb-4 text-center">
-            Alineación - {equipo.nombre}
-          </h3>
-
-          <div className="relative w-full h-full bg-green-700 rounded-lg border-4 border-white">
-            {jugadores.map((j, i) => (
-              <div
-                key={i}
-                className="absolute flex flex-col items-center text-white text-xs font-bold"
-                style={{
-                  top: posiciones[j.pos].top,
-                  left: posiciones[j.pos].left,
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                {/* Foto del jugador */}
-                <img
-                  src={j.foto}
-                  alt={j.nombre}
-                  className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-md"
-                />
-                <span className="mt-1">{j.nombre}</span>
-              </div>
-            ))}
-          </div>
-
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg"
-          >
-            Cerrar
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white px-4 sm:px-6 py-6">
       <HeaderLigas />
-      <HeaderLigaEspaña />
+      <HeaderLigasEspana />
+      <nav className="flex gap-4 sm:gap-6 border-b border-gray-700 pb-4 mb-6 text-sm sm:text-base mt-7">
+        <span className="text-gray-300 hover:text-green-400 transition-colors duration-200 pb-2 px-1">
+          Resultados
+        </span>
+        <a
+          href="CalendarioLiga"
+          className="text-white font-bold border-b-2 border-green-500 pb-2 px-1"
+        >
+          Calendario
+        </a>
+        <a
+          href="Clasificacion"
+          className="text-gray-300 hover:text-green-400 pb-2 px-1"
+        >
+          Clasificación
+        </a>
+        <a
+          href="fichajesliga"
+          className="text-gray-300 hover:text-green-400 pb-2 px-1"
+        >
+          Fichajes
+        </a>
+      </nav>
       <Toaster position="bottom-right" />
 
       {/* Encabezado */}
@@ -341,11 +245,7 @@ function CalendarioLiga() {
                 <img
                   src={partido.local.escudo}
                   alt={partido.local.nombre}
-                  className="w-10 h-10 object-contain cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setEquipoSeleccionado(partido.local);
-                  }}
+                  className="w-10 h-10 object-contain"
                 />
                 <span className="font-medium truncate">
                   {partido.local.nombre}
@@ -372,11 +272,7 @@ function CalendarioLiga() {
                 <img
                   src={partido.visitante.escudo}
                   alt={partido.visitante.nombre}
-                  className="w-10 h-10 object-contain cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setEquipoSeleccionado(partido.visitante);
-                  }}
+                  className="w-10 h-10 object-contain"
                 />
               </div>
             </div>
@@ -467,14 +363,6 @@ function CalendarioLiga() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Modal de alineaciones */}
-      {equipoSeleccionado && (
-        <AlineacionModal
-          equipo={equipoSeleccionado}
-          onClose={() => setEquipoSeleccionado(null)}
-        />
       )}
 
       <Footer />
