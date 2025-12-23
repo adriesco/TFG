@@ -146,12 +146,13 @@ function HeaderMainHome() {
       <div className="flex items-center gap-3 sm:gap-4 ml-auto">
         <select className="bg-transparent border border-white text-xs px-2 py-1 rounded text-white">
           <option value="ES">ES</option>
-          <option value="EN">EN</option>
         </select>
 
         <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center gap-2 border-2 border-yellow-300">
-          <span>⭐</span>
-          Premium
+          <Link to="/premium" title="Premium">
+            <span>⭐</span>
+            Premium
+          </Link>
         </button>
 
         <button className="p-1 focus:outline-none focus:ring-2 focus:ring-gray-00 rounded hover:bg-gray-700 transition">

@@ -15,11 +15,12 @@ import LigaEspañola from "./components/LigaEspañola";
 import Clasificacion from "./components/Clasificacion";
 import FichajesLiga from "./components/FichajesLiga";
 import HeaderLigas from "./components/HeaderLiga";
+import Premium from "./components/Premium";
 
 function App() {
   return (
     <Router>
-      <div className=" text-white min-h-screen flex flex-col justify-between">
+      <div className="text-white min-h-screen flex flex-col justify-between">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/registro" element={<Registro />} />
@@ -34,14 +35,13 @@ function App() {
             element={<PreguntasFrecuentes />}
           />
           <Route path="/mainhome" element={<MainHome />} />
-          <Route path="/headermainhome" element={<HeaderMainHome />} />
-          <Route path="/headerligaespaña" element={<HeaderLigaEspaña />} />
           <Route path="/editarperfil" element={<EditarPerfil />} />
           <Route path="/ligaespañola" element={<LigaEspañola />} />
           <Route path="/calendarioliga" element={<CalendarioLiga />} />
           <Route path="/clasificacion" element={<Clasificacion />} />
           <Route path="/fichajesliga" element={<FichajesLiga />} />
           <Route path="/headerligas" element={<HeaderLigas />} />
+          <Route path="/premium" element={<Premium />} />
         </Routes>
       </div>
     </Router>
