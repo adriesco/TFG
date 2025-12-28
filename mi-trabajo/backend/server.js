@@ -240,6 +240,28 @@ app.post("/cambiar-password", async (req, res) => {
   }
 });
 
+// Obtener clasificación de LaLiga
+app.get("/api/clasificacion", async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      `SELECT * 
+       FROM clasificacion_laliga 
+       ORDER BY posicion ASC`
+    );
+
+    res.json({
+      success: true,
+      equipos: rows,
+    });
+  } catch (err) {
+    console.error("💥 Error al obtener clasificación:", err.message);
+    res.status(500).json({
+      success: false,
+      message: "Error al obtener la clasificación",
+    });
+  }
+});
+
 // ================== SERVIDOR ================== //
 // Puerto configurable
 const PORT = process.env.PORT || 5000;
