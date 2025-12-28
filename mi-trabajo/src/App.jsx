@@ -6,7 +6,6 @@ import Home from "./components/Home";
 import Privacidad from "./components/Privacidad";
 import TerminosCondiciones from "./components/TerminosCondiciones";
 import HeaderMainHome from "./components/HeaderMainHome";
-import HeaderLigaEspaña from "./components/SubHeaderLiga";
 import CalendarioLiga from "./components/CalendarioLiga";
 import MainHome from "./components/MainHome";
 import PreguntasFrecuentes from "./components/PreguntasFrecuentes";
