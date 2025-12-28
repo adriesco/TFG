@@ -168,9 +168,12 @@ function CalendarioLiga() {
       <HeaderLigas />
       <HeaderLigasEspana />
       <nav className="flex gap-4 sm:gap-6 border-b border-gray-700 pb-4 mb-6 text-sm sm:text-base mt-7">
-        <span className="text-gray-300 hover:text-green-400 transition-colors duration-200 pb-2 px-1">
+        <a
+          href="LigaEspañola"
+          className="text-gray-300 hover:text-green-400 pb-2 px-1"
+        >
           Resultados
-        </span>
+        </a>
         <a
           href="CalendarioLiga"
           className="text-white font-bold border-b-2 border-green-500 pb-2 px-1"
