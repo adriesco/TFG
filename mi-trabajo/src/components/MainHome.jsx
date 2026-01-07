@@ -9,19 +9,17 @@ function MainHome() {
       <div className="flex flex-1">
         <aside className="hidden lg:block w-64 p-4">
           <div className="space-y-4 sticky top-4">
-            <div className="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-3 text-center">
+            <div className="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-3 flex flex-col items-center justify-center text-center">
               <p className="text-xs text-yellow-800 mb-2">📢 PATROCINADO</p>
               <img
-                src="/ads/casino.png"
-                alt="Bet365"
-                className="w-full h-40 object-cover rounded mb-2"
+                src="/ads/images.jpg"
+                alt="Mercadona"
+                className="w-20 h-20 object-cover rounded mb-2"
               />
-              <p className="text-sm font-bold text-gray-800">Apuesta en Vivo</p>
-              <p className="text-xs text-gray-600">
-                +18. Juega responsablemente
-              </p>
+              <p className="text-sm font-bold text-gray-800"></p>
+              <p className="text-xs text-gray-600">Compra Online</p>
               <button className="bg-green-500 text-white text-xs px-3 py-1 rounded mt-2 hover:bg-green-600">
-                Registrarse
+                Compra
               </button>
             </div>
 
