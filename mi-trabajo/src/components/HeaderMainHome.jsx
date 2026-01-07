@@ -192,32 +192,23 @@ function HeaderMainHome() {
                 <p className="font-semibold truncate max-w-[80px] sm:max-w-[120px]">
                   {nombreUsuario}
                 </p>
+                <Link to="/editarperfil" title="Editar perfil">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-300 hover:text-yellow-400 transition"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                    <path
+                      fillRule="evenodd"
+                      d="M2 15a1 1 0 011-1h11a1 1 0 110 2H3a1 1 0 01-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
               </div>
             </div>
-          </div>
-
-          <div className="absolute right-0 top-12 bg-gray-800 rounded-lg shadow-xl p-2 w-48 hidden group-hover:block animate-fade-in z-50">
-            <Link
-              to="/editarperfil"
-              className="block px-3 py-2 hover:bg-gray-700 rounded text-sm"
-            >
-              Editar perfil
-            </Link>
-            <Link
-              to="/configuracion"
-              className="block px-3 py-2 hover:bg-gray-700 rounded text-sm"
-            >
-              Configuración
-            </Link>
-            <button
-              onClick={() => {
-                localStorage.clear();
-                window.location.href = "/";
-              }}
-              className="w-full text-left px-3 py-2 hover:bg-gray-700 rounded text-sm text-red-400"
-            >
-              Cerrar sesión
-            </button>
           </div>
         </div>
       </div>
