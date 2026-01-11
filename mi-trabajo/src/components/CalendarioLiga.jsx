@@ -144,25 +144,6 @@ function CalendarioLiga() {
     },
   ];
 
-  // Función para añadir recordatorio
-  const handleRecordatorio = (partido) => {
-    if (
-      !recordatorios.some(
-        (r) =>
-          r.local.nombre === partido.local.nombre &&
-          r.visitante.nombre === partido.visitante.nombre &&
-          r.fecha === partido.fecha
-      )
-    ) {
-      setRecordatorios([...recordatorios, partido]);
-      toast.success(
-        `📅 Recordatorio añadido: ${partido.local.nombre} vs ${partido.visitante.nombre}`
-      );
-    } else {
-      toast.error("⚠️ Ya tienes este recordatorio guardado");
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white px-4 sm:px-6 py-6">
       <HeaderLigas />
@@ -195,7 +176,6 @@ function CalendarioLiga() {
       </nav>
       <Toaster position="bottom-right" />
 
-      {/* Encabezado */}
       <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
         <div>
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-1 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-green-300">
@@ -204,17 +184,6 @@ function CalendarioLiga() {
           <p className="text-md text-gray-300">
             Jornada 35 - Temporada 2025/26
           </p>
-        </div>
-        <div className="flex gap-3">
-          <button className="bg-gray-700 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-            Ver calendario completo
-          </button>
-          <button
-            onClick={() => setModalAbierto(true)}
-            className="bg-gray-700 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-          >
-            Mis recordatorios ({recordatorios.length})
-          </button>
         </div>
       </div>
 
@@ -282,65 +251,10 @@ function CalendarioLiga() {
 
             <div className="flex justify-between items-center mt-2 pt-2 border-t border-gray-700">
               <span className="text-xs text-gray-400">{partido.fecha}</span>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleRecordatorio(partido);
-                }}
-                className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-full transition-colors"
-              >
-                + Recordatorio
-              </button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Modal de recordatorios */}
-      {modalAbierto && (
-        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50">
-          <div className="bg-gray-900 p-6 rounded-xl shadow-lg w-11/12 sm:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto">
-            <h3 className="text-2xl font-bold mb-4">📝 Mis Recordatorios</h3>
-            {recordatorios.length === 0 ? (
-              <p className="text-gray-400">No tienes recordatorios aún.</p>
-            ) : (
-              <ul className="space-y-4">
-                {recordatorios.map((r, i) => (
-                  <li
-                    key={i}
-                    className="p-3 rounded-lg bg-gray-800 flex justify-between items-center"
-                  >
-                    <span>
-                      <b>{r.local.nombre}</b> vs <b>{r.visitante.nombre}</b>{" "}
-                      <span className="text-sm text-gray-400">
-                        ({r.fecha} - {r.hora})
-                      </span>
-                    </span>
-                    <button
-                      onClick={() =>
-                        setRecordatorios(
-                          recordatorios.filter((_, idx) => idx !== i)
-                        )
-                      }
-                      className="text-red-400 hover:text-red-600 text-sm"
-                    >
-                      ❌ Quitar
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <div className="flex justify-end mt-6">
-              <button
-                onClick={() => setModalAbierto(false)}
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
-              >
-                Cerrar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Modal de detalles de partido */}
       {partidoSeleccionado && (
